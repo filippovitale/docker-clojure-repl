@@ -8,7 +8,8 @@ RUN chmod +x /usr/local/bin/lein
 ENV LEIN_ROOT 1
 RUN lein upgrade
 
-ADD repl151 /
-RUN cd /repl151 && lein run || :
+ADD repl151 /repl151
+RUN cd /repl151 && echo "(exit)" | lein repl
 
+WORKDIR /repl151
 CMD lein repl
